@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fortune Demo</title>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b md:hidden">
+      <div class="flex items-center gap-3 px-3 py-2">
+        <button data-oc-open class="inline-flex items-center justify-center w-10 h-10 rounded-xl border bg-white active:scale-[0.98]" aria-label="Open menu">☰</button>
+        <div class="font-semibold">Fortune</div>
+        <div class="ml-auto text-xs text-slate-500">Demo</div>
+      </div>
+    </header>
+
+    <div data-oc-overlay class="hidden fixed inset-0 bg-black/40 z-40"></div>
+
+    <aside data-oc-panel
+      class="fixed z-50 inset-y-0 left-0 w-72 bg-white border-r -translate-x-full transition-transform duration-200
+             md:translate-x-0 md:static md:w-64">
+      <div class="p-4 flex items-center justify-between md:hidden">
+        <div class="font-semibold">메뉴</div>
+        <button data-oc-close class="w-10 h-10 rounded-xl border bg-white">✕</button>
+      </div>
+
+      <div class="p-4 border-b">
+        <div class="font-semibold text-lg">Fortune</div>
+        <div class="text-xs text-slate-500 mt-1">사주 · 대운 · 궁합 · 운세</div>
+      </div>
+
+      <nav class="p-3 space-y-1">
+        <a class="nav-link" href="#/">내 사주</a>
+        <a class="nav-link" href="#/daeun">대운</a>
+        <a class="nav-link" href="#/gunghap">궁합</a>
+        <a class="nav-link" href="#/daily">오늘 운세(샘플)</a>
+      </nav>
+
+      <div class="mt-auto p-4 border-t text-xs text-slate-500">
+        API: <span id="apiBaseLabel"></span>
+      </div>
+    </aside>
+
+    <main class="md:ml-64 p-4 md:p-6">
+      <div class="max-w-5xl mx-auto">
+        <div id="app"></div>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

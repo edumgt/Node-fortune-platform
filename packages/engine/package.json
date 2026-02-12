@@ -1,0 +1,10 @@
+{
+  "name": "@fortune/engine",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "dependencies": {
+    "@fullstackfamily/manseryeok": "^1.0.5"
+  }
+}
