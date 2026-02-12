@@ -1,6 +1,9 @@
 # Fortune Platform (Demo)
 Node(CommonJS) + Open-source manseryeok 기반으로 **사주/대운/궁합/풀이**까지 동작하는 데모 프로젝트입니다.
 
+![](1.png)
+![](2.png)
+
 ## 구성
 - `packages/engine` : 만세력(사주) 계산 어댑터 + 오행/십신/대운/궁합/풀이 엔진
 - `apps/api` : Express API 서버
