@@ -34,7 +34,7 @@ function renderDaeunMini(daeun) {
     <div class="p-3 rounded-xl border bg-white">
       <div class="text-xs text-slate-500">대운 ${p.index}</div>
       <div class="text-lg font-semibold">${escapeHtml(p.pillar)}</div>
-      <div class="text-xs text-slate-500 mt-1">${p.fromAge.toFixed(1)} ~ ${p.toAge.toFixed(1)}세</div>
+      <div class="text-xs text-slate-500 mt-1">${p.fromAge != null ? `${p.fromAge.toFixed(1)} ~ ${p.toAge.toFixed(1)}세` : "—"}</div>
     </div>
   `).join("");
   return `<div class="grid grid-cols-1 md:grid-cols-5 gap-2">${top}</div>`;

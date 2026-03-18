@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fortune Demo</title>
+    <title>Fortune – 사주 · 운세 · 궁합</title>
   </head>
   <body class="bg-slate-50 text-slate-900">
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b md:hidden">
       <div class="flex items-center gap-3 px-3 py-2">
         <button data-oc-open class="inline-flex items-center justify-center w-10 h-10 rounded-xl border bg-white active:scale-[0.98]" aria-label="Open menu">☰</button>
-        <div class="font-semibold">Fortune</div>
-        <div class="ml-auto text-xs text-slate-500">Demo</div>
+        <div class="font-semibold">Fortune 🔮</div>
+        <div class="ml-auto text-xs text-slate-500">사주팔자</div>
       </div>
     </header>
 
@@ -30,7 +30,7 @@
     </div>
 
     <div class="p-4 border-b">
-      <div class="font-semibold text-lg">Fortune</div>
+      <div class="font-semibold text-lg">Fortune 🔮</div>
       <div class="text-xs text-slate-500 mt-1">사주 · 대운 · 궁합 · 운세</div>
     </div>
 
@@ -38,8 +38,11 @@
       <a class="nav-link" href="#/">내 사주</a>
       <a class="nav-link" href="#/daeun">대운</a>
       <a class="nav-link" href="#/gunghap">궁합</a>
-      <a class="nav-link" href="#/daily">오늘 운세(샘플)</a>
+      <a class="nav-link" href="#/daily">오늘 운세</a>
     </nav>
+
+    <!-- User badge -->
+    <div id="userBadge" class="border-t"></div>
 
     <!-- mt-auto가 동작하려면 aside가 flex-col이어야 함 (위에서 md:flex md:flex-col 추가) -->
     <div class="mt-auto p-4 border-t text-xs text-slate-500">
