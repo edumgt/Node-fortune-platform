@@ -16,7 +16,7 @@ export function DaeunPage(state) {
     <tr class="border-b">
       <td class="py-2 text-sm">${p.index}</td>
       <td class="py-2 font-semibold">${escapeHtml(p.pillar)}</td>
-      <td class="py-2 text-sm">${p.fromAge.toFixed(1)} ~ ${p.toAge.toFixed(1)}</td>
+      <td class="py-2 text-sm">${p.fromAge != null ? `${p.fromAge.toFixed(1)} ~ ${p.toAge.toFixed(1)}` : "—"}</td>
     </tr>
   `).join("");
 

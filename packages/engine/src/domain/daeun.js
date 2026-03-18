@@ -76,13 +76,41 @@ function calcStartAge({ birth, nearestTerm, divisor }) {
 
 async function calcDaeun({ saju, input, ruleset }) {
   const direction = calcDirection({ saju, input, ruleset });
-  const nearestTerm = await findNearestSolarTermDate({ birth: input, direction });
 
-  if (!nearestTerm) {
+  let nearestTerm = null;
+  try {
+    nearestTerm = await findNearestSolarTermDate({ birth: input, direction });
+  } catch (err) {
+    // Solar terms data may not be available for the birth year range
+    const baseMonthPillar = saju.pillars.month.text;
+    const periodsCount = ruleset?.daeun?.periods ?? 10;
+    const periodYears = ruleset?.daeun?.periodYears ?? 10;
+    const periods = [];
+    for (let i = 0; i < periodsCount; i++) {
+      const pillar = stepPillar(baseMonthPillar, direction * (i + 1));
+      periods.push({ index: i + 1, pillar, fromAge: null, toAge: null });
+    }
     return {
       direction,
       startAge: null,
-      periods: [],
+      periods,
+      warning: `절기 데이터 범위 밖입니다(출생년도 ${input.year}). 대운 순서는 표시되지만 시작 나이는 계산할 수 없습니다.`,
+    };
+  }
+
+  if (!nearestTerm) {
+    const baseMonthPillar = saju.pillars.month.text;
+    const periodsCount = ruleset?.daeun?.periods ?? 10;
+    const periodYears = ruleset?.daeun?.periodYears ?? 10;
+    const periods = [];
+    for (let i = 0; i < periodsCount; i++) {
+      const pillar = stepPillar(baseMonthPillar, direction * (i + 1));
+      periods.push({ index: i + 1, pillar, fromAge: null, toAge: null });
+    }
+    return {
+      direction,
+      startAge: null,
+      periods,
       warning: "절기 데이터 범위 밖이거나 nearestTerm를 찾지 못했습니다.",
     };
   }

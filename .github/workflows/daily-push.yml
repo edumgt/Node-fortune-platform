@@ -1,0 +1,32 @@
+name: Daily Fortune Push Notification
+
+on:
+  schedule:
+    # 오전 8시(KST) = UTC 23:00 전날
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+    inputs:
+      api_base:
+        description: "API base URL"
+        required: false
+        default: ""
+
+jobs:
+  send-daily-push:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Send daily fortune push notifications
+        run: |
+          API_URL="${{ inputs.api_base || secrets.FORTUNE_API_URL || 'http://localhost:3000' }}"
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST "${API_URL}/api/push/send-daily" \
+            -H "Content-Type: application/json" \
+            -H "x-push-secret: ${{ secrets.PUSH_CRON_SECRET }}")
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+          echo "Response: $BODY"
+          echo "Status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "::warning::Push notification request returned status $HTTP_STATUS"
+          fi
